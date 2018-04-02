@@ -44,9 +44,9 @@
         <input class="form-control " type="search" placeholder="Search" id="search">
         <button class="btn" id="btn_search" type="submit">Search</button>
     </form>
-    <div><a href="#"><i class="icon-basket myicon"><span class="badge badge-info mr-3" style="right: 5px; position: relative; top: 8px;">0</span></i></a></div>
+    <div><a href="#"><i class="icon-basket myicon"><span class="badge badge-info mr-3" id="badge">0</span></i></a></div>
     <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account_user"><i class="icon-user myicon"></i></a>
-    <ul class="dropdown-menu" id="account_user" style="left: -100%;">
+    <ul class="dropdown-menu" id="account_user" style="left: -150%;">
         <li class="dropdown-submenu"><a class="dropdown-item" href="#">LogIn</a></li>
         <li class="dropdown-submenu"><a class="dropdown-item" href="#">Logout</a></li>
     </ul>

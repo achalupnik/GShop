@@ -1,12 +1,18 @@
 body{
     font-family: Roboto,Arial,Tahoma,sans-serif;
-    overflow: hidden;
+
 
 }
 
 *{
     margin: 0;
     padding: 0;
+}
+
+#badge{
+    right: 5px;
+    position: relative;
+    top: 8px;
 }
 
 #menu{
@@ -29,6 +35,11 @@ body{
     -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 5px 5px 0;
     border-radius: 0 5px 5px 0;
+}
+
+#btn_search:hover{
+    color: #F0F0F0;
+    background: #00002C;
 }
 
 #select_form{
@@ -68,5 +79,13 @@ body{
 }
 
 .myicon:hover{
+    color: black;
+}
+
+#left_sidebar li:hover{
+    background: lightblue;
+}
+
+#left_sidebar li:hover a{
     color: black;
 }
