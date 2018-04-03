@@ -3,12 +3,10 @@ include "Includes/head.php";
 include "Includes/menu.php";
 include "Includes/main_slider.php";
 include "Includes/left_sidebar.php";
+include "Includes/main_content.php";
 ?>
+<!-- Icons downloaded from fontello.com -->
 
-
-        <div class="col-xs-10">Main menu</div>
-    </div>
-</div>
 
     Stack Overflow
     Questions

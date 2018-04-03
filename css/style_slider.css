@@ -1,0 +1,83 @@
+#slider_wrapper{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+#slider{
+    width: 2000%;
+    height: 100%;
+    list-style-type: none;
+}
+
+#slider > li{
+    height: 100%;
+    width: 300px;
+    margin: 0 30px;
+    float: left;
+}
+
+#slider > li:first-child{
+    margin-left: 44px;
+}
+
+#slider > li > div{
+    height: 100%;
+}
+
+#slider > li > div > div:nth-child(2n+1){
+    background: #e3f2fd;
+}
+
+#slider img{
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+}
+
+#slider .btn{
+    background: #1ad1ff;
+    color: white;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+#right_mark, #left_mark{
+    position: absolute;
+    background: #1a1a1a;
+    opacity: 0.5;
+    height: 100%;
+    width: 55px;
+    z-index: 100;
+}
+
+#left_mark:hover, #right_mark:hover{
+    cursor: pointer;
+    background: #0d0d0d;
+    opacity: 0.8;
+}
+
+#right_mark{
+    right: 0;
+
+}
+
+#left_mark{
+    left: 0;
+}
+
+#right_mark > span, #left_mark > span{
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    font-size: 42px;
+    color: white;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
