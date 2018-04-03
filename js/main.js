@@ -1,8 +1,9 @@
 $(document).ready(function () {
+
+    //Main-menu responsiveness
     var mainNav = $("#mainNav").html();
     var f_form = $("#f_form").html();
     var mobileViewport = window.matchMedia("screen and (max-width: 580px)");
-
     mobileViewport.addListener(function(mq) {
         if(mq.matches) {
             $("#f_form").html("");
@@ -28,6 +29,7 @@ $(document).ready(function () {
 
     });
 
+    //Slider
     $("#left_mark").click(function () {
         if(count>0){
             count--;
@@ -37,20 +39,24 @@ $(document).ready(function () {
     });
 
 
-    set_li_width(5);
+    //Slider - set number li
+    var wrapper_slider_x = parseInt($("#slider_wrapper").width());
+    var number_li = Math.round(wrapper_slider_x/250);
+    set_li_width(number_li);
     $(window).resize(function () {
-        set_li_width(5);
+        var wrapper_slider_x = parseInt($("#slider_wrapper").width());
+        var number_li = Math.round(wrapper_slider_x/250);
+        set_li_width(number_li);
     });
 
 
 });
 
-function set_li_width(number) {
+
+function set_li_width(number_li) {
     var m_right = parseInt($("ul#slider li:nth-child(1)").css('margin-right'),10);
-    var m_left = parseInt($("ul#slider li:nth-child(1)").css('margin-left'),10);
-    m_left = m_left - m_right;
     var full_width = $("#slider_wrapper").width();
-    var new_li_width = (full_width - 2*number*m_right - m_left)/number;
+    var new_li_width = (full_width - 2*number_li*m_right)/number_li;
     $("ul#slider li").width(new_li_width);
 }
 

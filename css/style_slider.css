@@ -24,10 +24,6 @@
     float: left;
 }
 
-#slider > li:first-child{
-    margin-left: 44px;
-}
-
 #slider > li > div{
     height: 100%;
 }
@@ -57,6 +53,11 @@
     height: 100%;
     width: 55px;
     z-index: 100;
+    display: none;
+}
+
+#slider_wrapper:hover #right_mark, #slider_wrapper:hover #left_mark{
+    display: block;
 }
 
 #left_mark:hover, #right_mark:hover{
