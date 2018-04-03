@@ -6,9 +6,15 @@
 }
 
 #slider{
+    left: 0;
     width: 2000%;
     height: 100%;
     list-style-type: none;
+    -webkit-transition: transform 0.8s ease-in-out;
+    -moz-transition: transform 0.8s ease-in-out;
+    -ms-transition: transform 0.8s ease-in-out;
+    -o-transition: transform 0.8s ease-in-out;
+    transition: transform 0.8s ease-in-out;
 }
 
 #slider > li{
@@ -46,6 +52,7 @@
 
 #right_mark, #left_mark{
     position: absolute;
+    top: 0;
     background: #1a1a1a;
     opacity: 0.5;
     height: 100%;

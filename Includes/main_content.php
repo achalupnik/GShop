@@ -66,9 +66,10 @@
                     </div>
                 </div>
             </li>
-            <div id="left_mark"><span>&#60;</span></div>
-            <div id="right_mark"><span>&#62;</span></div>
+
         </ul>
+        <div id="left_mark"><span>&#60;</span></div>
+        <div id="right_mark"><span>&#62;</span></div>
     </div>
 
 
