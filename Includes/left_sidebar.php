@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 mb-5">
     <div class="row">
         <div class="col-2">
             <ul class="nav nav-pills flex-column" id="left_sidebar">
