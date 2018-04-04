@@ -39,17 +39,24 @@ $(document).ready(function () {
     });
 
 
-    //Slider - set number li
+    //Slider - draggable
+    $("#slider").draggable({
+        appendTo: $("#slider_wrapper"),
+        axis: "x"
+    });
+});
+
+
+
+
+//Slider - set number li
+var wrapper_slider_x = parseInt($("#slider_wrapper").width());
+var number_li = Math.round(wrapper_slider_x/250);
+set_li_width(number_li);
+$(window).resize(function () {
     var wrapper_slider_x = parseInt($("#slider_wrapper").width());
     var number_li = Math.round(wrapper_slider_x/250);
     set_li_width(number_li);
-    $(window).resize(function () {
-        var wrapper_slider_x = parseInt($("#slider_wrapper").width());
-        var number_li = Math.round(wrapper_slider_x/250);
-        set_li_width(number_li);
-    });
-
-
 });
 
 

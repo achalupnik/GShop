@@ -1,4 +1,6 @@
 <link type="text/css" rel="stylesheet" href="css/style_slider.css">
+<?php include 'Includes/slider_modal.php'; ?>
+
 <div class="col-10">
     <div id="slider_wrapper">
         <ul id="slider">
@@ -10,7 +12,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="float-left" style="line-height: 30px;">400zł</span>
-                        <button class="btn  btn-sm float-right"><details></details></button>
+                        <button class="btn  btn-sm float-right" data-toggle="modal" data-target="#slider_modal"><details></details></button>
                     </div>
                 </div>
             </li>
@@ -23,7 +25,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="float-left" style="line-height: 30px;">400zł</span>
-                        <button class="btn  btn-sm float-right"><details></details></button>
+                        <button class="btn  btn-sm float-right" data-toggle="modal" data-target="#slider_modal"><details></details></button>
                     </div>
                 </div>
             </li>

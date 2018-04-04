@@ -3,6 +3,7 @@
     width: 80vw;
     height: auto;
     overflow: hidden;
+    display: block;
 }
 
 #slider{
@@ -87,4 +88,37 @@
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+#slider_modal_img{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#slider_modal_img img{
+    width: 70%;
+    height: auto;
+}
+
+
+hr {
+    margin: 22px 0;
+}
+
+#slider_modal{
+    font-size: 14px;
+}
+
+.btn-light{
+    border: 1px solid #d9d9d9;
+}
+
+.btn-warning, .btn-warning:hover{
+    color: white;
+}
+
+.btn-warning .icon-basket:before{
+    font-size: 18px;
 }
