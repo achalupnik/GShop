@@ -1,9 +1,9 @@
 <?php
-include "Includes/head.php";
-include "Includes/menu.php";
-include "Includes/main_img.php";
-include "Includes/left_sidebar.php";
-include "Includes/main_content.php";
+include "includes/head.php";
+include "includes/menu.php";
+include "includes/main_img.php";
+include "includes/left_sidebar.php";
+include "includes/main_content.php";
 ?>
 <!-- Icons downloaded from fontello.com -->
 
@@ -21,4 +21,4 @@ include "Includes/main_content.php";
     <p>Proin venenatis sodales vehicula. Duis arcu mauris, consectetur vitae dapibus id, consectetur ac dui. Morbi laoreet turpis ac elit scelerisque, quis gravida odio tempus. In egestas tempor justo ut placerat. Morbi rhoncus est sed velit tempus fringilla. Duis leo nulla, convallis gravida bibendum eget, ultricies luctus elit. Donec non rutrum lectus. Cras finibus, ante ac imperdiet fermentum, nibh tortor luctus risus, ut consequat metus erat in leo. In quis massa rhoncus ipsum posuere pretium nec quis sapien.</p>
 </div>
 <?php
-include 'Includes/footer.php';
+include 'includes/footer.php';

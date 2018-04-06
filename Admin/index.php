@@ -1,7 +1,7 @@
 <?php
-require_once '../Core/db_connection.php';
+require_once '../Core/init.php';
 include  'Includes/head.php';
-include  '../Includes/menu.php';
+include  'Includes/menu.php';
 ?>
 
 

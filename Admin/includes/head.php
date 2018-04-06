@@ -8,9 +8,9 @@
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../libraries/Bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../libraries/jQuery_UI/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fontello.css">
+    <link rel="stylesheet" href="../font/fontello/css/edit.css">
 </head>
 <body>

@@ -61,7 +61,7 @@ $(window).resize(function () {
 
 
 function set_li_width(number_li) {
-    var m_right = parseInt($("ul#slider li:nth-child(1)").css('margin-right'),10);
+    var m_right = parseInt($("ul#slider li:nth-child(1)").css('padding-right'),10);
     var full_width = $("#slider_wrapper").width();
     var new_li_width = (full_width - 2*number_li*m_right)/number_li;
     $("ul#slider li").width(new_li_width);

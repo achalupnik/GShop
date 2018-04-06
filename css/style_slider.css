@@ -21,7 +21,7 @@
 #slider > li{
     height: 100%;
     width: 14vw;
-    margin: 0 0.5vw;
+    padding: 0 0.5vw;
     float: left;
 }
 
@@ -103,16 +103,8 @@
 }
 
 
-hr {
-    margin: 22px 0;
-}
-
 #slider_modal{
     font-size: 14px;
-}
-
-.btn-light{
-    border: 1px solid #d9d9d9;
 }
 
 .btn-warning, .btn-warning:hover{

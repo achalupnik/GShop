@@ -1,5 +1,5 @@
 <link type="text/css" rel="stylesheet" href="css/style_slider.css">
-<?php include 'Includes/slider_modal.php'; ?>
+<?php include 'includes/slider_modal.php'; ?>
 
 <div class="col-10">
     <div id="slider_wrapper">

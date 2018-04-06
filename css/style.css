@@ -1,12 +1,33 @@
 body{
     font-family: Roboto,Arial,Tahoma,sans-serif;
-
-
-}
-
-*{
     margin: 0;
     padding: 0;
+}
+
+.td_width{
+    width: 10vw;
+    min-width: 150px;
+}
+
+.all-center{
+    margin: 0 auto;
+}
+
+.no-decoration{
+    text-decoration: none;
+    color: black;
+}
+
+.no-decoration:hover{
+    text-decoration: none;
+}
+
+.btn-light{
+    border: 1px solid #d9d9d9;
+}
+
+hr {
+    margin: 22px 0;
 }
 
 #badge{
@@ -52,9 +73,6 @@ body{
     border-radius: 5px 0 0 5px;
 }
 
-#select_form:hover{
-    border: 1px solid #737373;
-}
 
 #search:focus, #btn_search:focus, #select_form:focus{
     -webkit-box-shadow: none;
