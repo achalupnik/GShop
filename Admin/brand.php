@@ -1,6 +1,7 @@
 <?php
 require_once '../Core/init.php';
 include 'includes/head.php';
+include 'includes/menu.php';
 
 if(isset($_POST) && !empty($_POST) || !empty($_GET)){
     $errors = array();

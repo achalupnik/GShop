@@ -14,11 +14,14 @@ if(isset($_POST) && !empty($_POST)){
         if($result->num_rows)
             $errors[] = "W bazie danych istnieje już marka o takiej nazwie";
 
+        if(empty($category_child))
+            $errors[] = "Pole z nazwą kategorii nie może być puste";
+
         if(empty($errors)){
             $sql = "INSERT INTO category (name, parent) VALUES ('$category_child', '$category_parent_id')";
             mysqli_query($connection, $sql);
         }else
-            display_errors($errors);
+            echo display_errors($errors);
     }
 }
 

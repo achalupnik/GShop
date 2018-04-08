@@ -4,7 +4,10 @@ include "includes/head.php";
 include 'includes/menu.php';
 
 $errors = array();
+
 if(isset($_GET) && !empty($_GET)){
+
+    //Delete product
     if(isset($_GET['del']) && !empty($_GET['del'])){
         $del_id = (int)sanitize($_GET['del']);
         $sql = "UPDATE product SET deleted=1 WHERE id=".$del_id;
@@ -13,6 +16,7 @@ if(isset($_GET) && !empty($_GET)){
         exit();
     }
 
+    //Add product to DB
     if(isset($_GET['add']) && !empty($_GET['add']) && isset($_POST) && !empty($_POST)){
         $product_name = sanitize($_POST['product_name']);
         $product_brand_id = (int)sanitize($_POST['product_brand']);
@@ -20,29 +24,56 @@ if(isset($_GET) && !empty($_GET)){
         $child_category_id = (int)sanitize($_POST['child_category']);
         $product_price = sanitize($_POST['product_price']);
         $product_size = sanitize($_POST['product_size']);
-        $product_img = sanitize($_POST['product_img']);
-        $product_description = sanitize($_POST['description']);
+        $product_img = $_FILES['product_img'];
+        $product_description = sanitize($_POST['product_description']);
 
         $sql = "SELECT * FROM product WHERE name='$product_name'";
-        $reult = mysqli_query($connection, $sql);
+        $result = mysqli_query($connection, $sql);
         if($result->num_rows)
-            $errors = "Produkt o takiej nazwie już istnieje w bazie danych";
+            $errors[] = "Produkt o takiej nazwie już istnieje w bazie danych";
 
-        
+        if($product_img['size']>1000000)
+            $errors[] = "Obrazek nie może mieć rozmiar większy niż 1MB";
+
+        $product_img_type = explode('/', $product_img['type']);
+        if($product_img_type[0] != 'image')
+            $errors[] = "Przesłany plik musi być typu image";
+
+        $allowed_ext_img = array("gif", "jpeg", "jpg", "png");
+        if(!in_array($product_img_type[1], $allowed_ext_img))
+            $errors[] = "Dozwolone typy obrazu: gif, jpeg, jpg, png";
+
+        $name_extention = explode('.', $product_img['name']);
+        if(!in_array($name_extention[1], $allowed_ext_img))
+            $errors[] = "Dozwolone rozszerzenia obrazu: gif, jpeg, jpg, png";
+
+
+        $post = array('product_name', 'product_brand', 'parent_category', 'child_category', 'product_price', 'product_size');
+        foreach ($post as $key => $item){
+            if(empty($_POST[$post[$key]])){
+                $errors[] = "Musisz uzupełnić wszytkie pola oznaczone znakiem gwiazdki(*)";
+                break;
+            }
+        }
+
+        if(!empty($errors))
+            echo display_errors($errors);
+
     }
 }
 
+//Add product - Form
 if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
     <h3 class="text-center mt-4 mb-5">Dodaj Produkt</h3>
     <div class="container-fluid">
         <form method="post" action="product.php?add=1" enctype="multipart/form-data">
             <div class="row mt-3 mb-4">
                 <div class="col-md-3">
-                    <label for="product_name">Produkt:</label>
+                    <label for="product_name">Produkt*:</label>
                     <input type="text" id="product_name" name="product_name" class="form-control">
                 </div>
                 <div class="col-md-3">
-                    <label for="product_brand">Marka:</label>
+                    <label for="product_brand">Marka*:</label>
                     <select id="product_brand" name="product_brand" class="form-control">
                         <option value="0"></option>
                         <?php
@@ -57,7 +88,7 @@ if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="parent_category">Kategoria (Rodzic):</label>
+                    <label for="parent_category">Kategoria (Rodzic)*:</label>
                     <select id="parent_category" name="parent_category" class="form-control" onchange="change_child_category();">
                         <option value="0">Rodzic</option>
                         <option disabled>─────────────────────</option>
@@ -73,7 +104,7 @@ if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="child_category">Kategoria (Dziecko):</label>
+                    <label for="child_category">Kategoria (Dziecko)*:</label>
                     <select id="child_category" name="child_category" class="form-control">
                         <option value="0"></option>
                         <?php
@@ -89,12 +120,12 @@ if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="product_price">Cena: (zł)</label>
+                    <label for="product_price">Cena (zł)*:</label>
                     <input type="text" id="product_price" name="product_price" class="form-control" placeholder="Cena np. 12.99">
                 </div>
                 <div class="col-md-4">
-                    <label for="btn_size">Rozmiar & Ilość:</label>
-                    <button id="btn_size" class="btn btn-light form-control" data-toggle="modal" data-target="#modal_size">Rozmiar & Ilość</button>
+                    <label for="btn_size">Rozmiar & Ilość*:</label>
+                    <button id="btn_size" type="button" class="btn btn-light form-control" data-toggle="modal" data-target="#modal_size">Rozmiar & Ilość</button>
 
                     <div class="modal fade" id="modal_size" tabindex="-1" role="dialog" aria-labelledby="modal_size" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
@@ -109,7 +140,7 @@ if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
                                     <div id="modal_data">
                                         <!-- This data are added by JS script -->
                                     </div>
-                                    <button class="btn btn-primary mt-1" onclick="add_modal_row();">Dodaj pola edycyjne</button>
+                                    <button class="btn btn-primary mt-1" type="button" onclick="add_modal_row();">Dodaj pola edycyjne</button>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" onclick="process_modal_data();">Akceptuje</button>
@@ -121,7 +152,7 @@ if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
                 </div>
                 <div class="col-md-4">
                     <label for="product_size">Rozmiar & Ilość: (podgląd)</label>
-                    <input type="text" id="product_size" name="product_size" class="form-control" value="" disabled>
+                    <input type="text" id="product_size" name="product_size" class="form-control" value="" readonly>
                 </div>
             </div>
             <div class="row my-4">
@@ -144,6 +175,8 @@ if(isset($_GET['add']) && !empty($_GET['add'])){ ?>
 
 <?php
 }else {
+
+    //Display products
     ?>
     <link type="text/css" rel="stylesheet" href="../css/toggle_switch.css">
     <div id="test"></div>
@@ -222,6 +255,7 @@ include 'includes/footer.php';
         add_modal_row();
     });
 
+//Switch feature in DB
 function switch_feature(id) {
     var data = {"id": id};
     $.ajax({
@@ -231,9 +265,9 @@ function switch_feature(id) {
     });
 }
 
+//Display all child for selected parent
 function change_child_category() {
     var parent = $("#parent_category").find(":selected").val();
-    alert(parent);
     var data = {"parent_id": parent};
     $.ajax({
         url      : 'for_ajax/product_change_child_category.php',
@@ -248,6 +282,7 @@ function change_child_category() {
     });
 }
 
+//Add row with Size & Ammount to modal
 var row_number = 0;
 function add_modal_row(){
     row_number++;
@@ -262,6 +297,7 @@ function add_modal_row(){
     $("#modal_data").append(temp);
 }
 
+//In modal on Accept - Push data to product_size
 function process_modal_data() {
     var nr = 1;
     var size, amount, data='';
