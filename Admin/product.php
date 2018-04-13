@@ -1,7 +1,19 @@
 <?php
-require_once '../Core/init.php';
-include "includes/head.php";
+include 'includes/head.php';
 include 'includes/menu.php';
+include  '../Core/info.php';
+
+if(!is_logged()){
+    header('Location: login.php');
+    $_SESSION['error_flash'] = "Musisz być zalogowany by mieć dostęp do tej funkcji";
+    exit();
+}
+
+if(!have_permission('editor')){
+    header('Location: index.php');
+    $_SESSION['error_flash'] = "Nie masz potrzebnych uprawnień by przeprowadzić tą akcję";
+    exit();
+}
 
 $errors = array();
 
@@ -16,10 +28,19 @@ if(isset($_GET) && !empty($_GET)){
         exit();
     }
 
+    if(isset($_GET['restore']) && !empty($_GET['restore'])){
+        $restore_id = (int)sanitize($_GET['restore']);
+        $sql = "UPDATE product SET deleted=0 WHERE id=".$restore_id;
+        mysqli_query($connection, $sql);
+        header('Location: product.php?restore');
+        exit();
+    }
+
     if(isset($_GET['edit']))
         $main_id = sanitize($_GET['edit']);
     else
-        $main_id = (int)sanitize($_GET['add']);
+        if(isset($_GET['add']))
+            $main_id = (int)sanitize($_GET['add']);
 
 
     //Add/Edit product to DB
@@ -156,8 +177,7 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
                 <div class="col-md-3">
                     <label for="parent_category">Kategoria (Rodzic)*:</label>
                     <select id="parent_category" name="parent_category" class="form-control" onchange="change_child_category();">
-                        <option value="0">Rodzic</option>
-                        <option disabled>─────────────────────</option>
+                        <option></option>
                         <?php
                         $sql = "SELECT * FROM category WHERE parent=0";
                         $result = mysqli_query($connection, $sql);
@@ -172,15 +192,7 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
                 <div class="col-md-3">
                     <label for="child_category">Kategoria (Dziecko)*:</label>
                     <select id="child_category" name="child_category" class="form-control">
-                        <option value="0"></option>
-                        <?php
-                        $result = mysqli_query($connection, $sql);
-                        while($row = $result->fetch_assoc()):
-                        ?>
-                        <option value="<?=$row['id'];?>" <?=((isset($child_category_id) && !empty($child_category_id) && $row['id']==$child_category_id)?'selected':'');?>><?=$row['name'];?></option>
-                        <?php
-                        endwhile;
-                        ?>
+                        <option></option>
                     </select>
                 </div>
             </div>
@@ -246,8 +258,48 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
 
 
 <?php
-}else {
+}else
+    if(isset($_GET['restore'])) { ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-sm">
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Restore</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $sql = "SELECT * FROM product WHERE deleted=1";
+                    $result = mysqli_query($connection, $sql);
+                    while($row = $result->fetch_assoc()):
+                        ?>
+                        <tr>
+                            <td><?=$row['name'];?></td>
+                            <td><?=$row['price'];?></td>
+                            <td><a class="no-decoration" href="product.php?restore=<?=$row['id'];?>"><i class="icon-ccw"></i></a></td>
+                        </tr>
+                        <?php
+                    endwhile;
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
 
+    </div>
+
+
+
+
+
+        <?php
+    }else{
     //Display products
     ?>
     <link type="text/css" rel="stylesheet" href="../css/toggle_switch.css">
@@ -257,7 +309,7 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
         <div class="form-inline my-4">
             <div class="all-center">
                 <a href="product.php?add=1" class="btn btn-success mr-1">Dodaj Produkt</a>
-                <a href="product.php?restore=1" class="btn btn-primary">Przywróć produkt</a>
+                <a href="product.php?restore" class="btn btn-primary">Przywróć produkt</a>
             </div>
         </div>
         <hr style="border: 1px solid gray; opacity: 0.3;">

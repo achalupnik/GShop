@@ -11,24 +11,15 @@ if($connection->errno){
 }
 mysqli_set_charset($connection,"utf8");
 
+session_start();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if(isset($_SESSION['user_id']) && $_SESSION['user_id']>0){
+    $sql = "SELECT * FROM users WHERE id=".$_SESSION['user_id'];
+    $result = mysqli_query($connection, $sql);
+    $user_data = $result->fetch_assoc();
+}
 
 
 
@@ -37,3 +28,24 @@ mysqli_set_charset($connection,"utf8");
 
 
 require_once 'helpers.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

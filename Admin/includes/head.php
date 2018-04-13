@@ -14,3 +14,6 @@
     <link rel="stylesheet" href="../font/fontello/css/edit.css">
 </head>
 <body>
+
+<?php
+require_once '../Core/init.php';

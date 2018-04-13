@@ -1,7 +1,19 @@
 <?php
-require_once '../Core/init.php';
 include 'includes/head.php';
 include 'includes/menu.php';
+include  '../Core/info.php';
+
+if(!is_logged()){
+    header('Location: login.php');
+    $_SESSION['error_flash'] = "Musisz być zalogowany by mieć dostęp do tej funkcji";
+    exit();
+}
+
+if(!have_permission('editor')){
+    header('Location: index.php');
+    $_SESSION['error_flash'] = "Nie masz potrzebnych uprawnień by przeprowadzić tą akcję";
+    exit();
+}
 
 if(isset($_POST) && !empty($_POST) || !empty($_GET)){
     $errors = array();

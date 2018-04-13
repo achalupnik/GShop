@@ -12,3 +12,13 @@ function display_errors($errors){
     $temp .= '</ul>';
     return $temp;
 }
+
+function is_logged(){
+    return (isset($_SESSION['user_id']) && $_SESSION['user_id']>0);
+}
+
+function have_permission($permission = 'admin'){
+    global $user_data;
+    $array = explode(',', $user_data['permissions']);
+    return in_array($permission, $array);
+}
