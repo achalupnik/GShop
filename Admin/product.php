@@ -61,7 +61,7 @@ if(isset($_GET) && !empty($_GET)){
         $product_description = sanitize($_POST['product_description']);
 
 
-        if(isset($product_name)) {
+        if(isset($product_name) and !$_GET['edit']) {
             $sql = "SELECT * FROM product WHERE name='$product_name'";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows)

@@ -4,6 +4,7 @@ include "includes/menu.php";
 include "includes/main_img.php";
 include "includes/left_sidebar.php";
 include "includes/main_content.php";
+require_once 'Core/init.php';
 ?>
 <!-- Icons downloaded from fontello.com -->
 

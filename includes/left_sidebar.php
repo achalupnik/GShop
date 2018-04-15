@@ -3,10 +3,16 @@
         <div class="col-2">
             <ul class="nav nav-pills flex-column" id="left_sidebar">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">Brands</a>
+                    <a href="#" class="nav-link active">Marki</a>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">Nike</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Puma</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Addidas</a></li>
+                <?php
+                $sql = "SELECT * FROM brand";
+                $result = mysqli_query($connection, $sql);
+                while($row = $result->fetch_assoc()):
+                ?>
+                <li class="nav-item"><a href="#" class="nav-link"><?=$row['name'];?></a></li>
+                <?php
+                endwhile;
+                ?>
             </ul>
         </div>
