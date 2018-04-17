@@ -16,5 +16,6 @@ require_once 'Core/init.php';
     <link rel="stylesheet" type="text/css" href="libraries/jQuery_UI/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="font/fontello/css/edit.css">
+
 </head>
 <body>

@@ -5,7 +5,11 @@
     <div id="slider_wrapper">
         <ul id="slider">
             <?php
-            $sql = "SELECT * FROM product LIMIT 20";
+            if(isset($_GET['brand']) && !empty($_GET['brand'])){
+                $brand = (int)sanitize($_GET['brand']);
+                $sql = "SELECT * FROM product WHERE brand='$brand' LIMIT 40";
+            }else
+                $sql = "SELECT * FROM product LIMIT 40";
             $result = mysqli_query($connection, $sql);
             while($row = $result->fetch_assoc()):
             ?>
@@ -17,7 +21,7 @@
                     </div>
                     <div class="card-footer">
                         <span class="float-left" style="line-height: 30px;"><?=$row['price'];?>zł</span>
-                        <button class="btn  btn-sm float-right" data-toggle="modal" data-target="#slider_modal"><details></details></button>
+                        <button class="btn btn-sm float-right" data-toggle="modal" data-target="#slider_modal" onclick="summon_modal(<?=$row['id'];?>);"><details></details></button>
                     </div>
                 </div>
             </li>

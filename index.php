@@ -20,6 +20,24 @@ require_once 'Core/init.php';
     <p>Suspendisse luctus neque eget vestibulum sagittis. Pellentesque accumsan leo et viverra condimentum. Nam mattis consequat lectus, ac dapibus nisi sagittis ac. Aliquam erat volutpat. Nam commodo erat quis dui pellentesque, eget elementum lectus dapibus. Quisque vitae tempus nulla. Etiam molestie sagittis ex, eu auctor turpis sagittis ut. Phasellus vitae semper massa.</p>
 
     <p>Proin venenatis sodales vehicula. Duis arcu mauris, consectetur vitae dapibus id, consectetur ac dui. Morbi laoreet turpis ac elit scelerisque, quis gravida odio tempus. In egestas tempor justo ut placerat. Morbi rhoncus est sed velit tempus fringilla. Duis leo nulla, convallis gravida bibendum eget, ultricies luctus elit. Donec non rutrum lectus. Cras finibus, ante ac imperdiet fermentum, nibh tortor luctus risus, ut consequat metus erat in leo. In quis massa rhoncus ipsum posuere pretium nec quis sapien.</p>
-</div>
+
+
+
+<script type="text/javascript">
+
+function summon_modal(id) {
+    var data = {"id": id};
+    $.ajax({
+        url:        'for_ajax_main/index_modal.php',
+        data:       data,
+        type:       'post',
+        success:     function (data) {
+            $("#for_swap").html(data);
+        }
+    });
+}
+
+</script>
+
 <?php
 include 'includes/footer.php';

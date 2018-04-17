@@ -65,6 +65,8 @@ function set_li_width(number_li) {
     var full_width = $("#slider_wrapper").width();
     var new_li_width = (full_width - 2*number_li*m_right)/number_li;
     $("ul#slider li").width(new_li_width);
+    $("#right_mark").height($("#slider li:nth-child(1)").height());
+    $("#left_mark").height($("#slider li:nth-child(1)").height());
 }
 
 
