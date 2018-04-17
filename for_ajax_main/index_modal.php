@@ -35,16 +35,16 @@ ob_start();
                     <p><?=$row['description'];?></p><hr>
                     <p>Cena: <?=$row['price'];?>zł</p>
                     <p>Marka: <?=$row_brand['name'];?></p>
-                    <label for="quanity"><b>Zamawiana ilość towaru</b></label><br>
+                    <label for="quanity"><b>Ilość</b></label><br>
                     <input type="number" id="quanity" class="form-control"><br>
-                    <label for="size"><b>Rozmiar: dostępna ilość</b></label>
+                    <label for="size"><b>Rozmiar</b></label>
                     <select id="size" class="form-control">
                         <option></option>
                         <?php
                         $n=0;
                         while($sizes[$n] != ''):
                         ?>
-                        <option><?=$sizes[$n].': '.$quantities[$n];?></option>
+                        <option><?=$sizes[$n].' - Dostępne('.$quantities[$n].')';?></option>
                         <?php
                         $n++;
                         endwhile;

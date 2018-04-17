@@ -14,7 +14,7 @@
             while($row = $result->fetch_assoc()):
             ?>
             <li>
-                <div class="card">
+                <div class="card" id="pusty">
                     <div class="card-header text-center"><?=$row['name'];?></div>
                     <div class="card-body">
                         <img src="<?=$row['image'];?>" alt="<?=$row['name'];?>">

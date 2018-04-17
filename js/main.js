@@ -50,17 +50,15 @@ $(document).ready(function () {
 
 
 //Slider - set number li
-var wrapper_slider_x = parseInt($("#slider_wrapper").width(),10);
-var number_li = Math.round(wrapper_slider_x/250);
-set_li_width(number_li);
-$(window).resize(function () {
-    var wrapper_slider_x = parseInt($("#slider_wrapper").width(),10);
-    var number_li = Math.round(wrapper_slider_x/250);
-    set_li_width(number_li);
+set_li_width();
+$(window).resize(function() {
+    set_li_width();
 });
 
+function set_li_width() {
+    var wrapper_slider_x = parseInt($("#slider_wrapper").width(),10);
+    var number_li = Math.round(wrapper_slider_x/250);
 
-function set_li_width(number_li) {
     var m_right = parseInt($("ul#slider li:nth-child(1)").css('padding-right'),10);
     var full_width = $("#slider_wrapper").width();
     var new_li_width = (full_width - 2*number_li*m_right)/number_li;
@@ -71,6 +69,32 @@ function set_li_width(number_li) {
 
 
 
+//Insert data selected product into Modal of Slider (when clicked 'Show details')
+function summon_modal(id) {
+    var data = {"id": id};
+    $.ajax({
+        url:        'for_ajax_main/index_modal.php',
+        data:       data,
+        type:       'post',
+        success:     function (data) {
+            $("#for_swap").html(data);
+        }
+    });
+}
+
+//Display products in slider selected by pick brand
+function select_table(id, table) {
+    var data = {"id": id, "table": table};
+    $.ajax({
+        url:        'for_ajax_main/select_slider_elements.php',
+        type:       'post',
+        data:       data,
+        success:    function (data) {
+            $("#slider").html(data);
+            set_li_width();
+        }
+    });
+}
 
 
 

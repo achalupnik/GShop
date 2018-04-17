@@ -25,17 +25,7 @@ require_once 'Core/init.php';
 
 <script type="text/javascript">
 
-function summon_modal(id) {
-    var data = {"id": id};
-    $.ajax({
-        url:        'for_ajax_main/index_modal.php',
-        data:       data,
-        type:       'post',
-        success:     function (data) {
-            $("#for_swap").html(data);
-        }
-    });
-}
+
 
 </script>
 

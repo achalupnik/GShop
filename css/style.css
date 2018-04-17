@@ -4,6 +4,10 @@ body{
     padding: 0;
 }
 
+.pointer:hover{
+    cursor: pointer;
+}
+
 .td_width{
     width: 10vw;
     min-width: 150px;

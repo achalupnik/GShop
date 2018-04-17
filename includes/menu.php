@@ -19,7 +19,7 @@
                         $sql = "SELECT * FROM category WHERE parent=".$row['id'];
                         $result2 = mysqli_query($connection, $sql);
                         while($row2 = $result2->fetch_assoc()): ?>
-                    <a class="dropdown-item" href="#"><?=$row2['name'];?></a>
+                    <div class="dropdown-item pointer" onclick="select_table(<?=$row2['id'];?>, 'category');"><?=$row2['name'];?></div>
                         <?php endwhile; ?>
                 </div>
             </li>
