@@ -1,4 +1,3 @@
-<footer class="text-center mt-5">CopyRight &copy; 2018 GShop</footer>
 
 <script type="text/javascript" src="../libraries/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../libraries/Bootstrap/bootstrap.js"></script>

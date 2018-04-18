@@ -44,7 +44,7 @@ ob_start();
                         $n=0;
                         while($sizes[$n] != ''):
                         ?>
-                        <option><?=$sizes[$n].' - Dostępne('.$quantities[$n].')';?></option>
+                        <option><?=$sizes[$n].' - Dostępnych('.$quantities[$n].')';?></option>
                         <?php
                         $n++;
                         endwhile;

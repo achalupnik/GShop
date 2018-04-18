@@ -96,6 +96,7 @@ function select_table(id, table) {
     });
 }
 
+$("#sec_menu li:last-child a").tab('show');
 
 
 

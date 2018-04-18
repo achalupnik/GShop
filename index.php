@@ -23,11 +23,5 @@ require_once 'Core/init.php';
 
 
 
-<script type="text/javascript">
-
-
-
-</script>
-
 <?php
 include 'includes/footer.php';
