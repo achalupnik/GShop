@@ -87,7 +87,7 @@ if(isset($_GET['edit']) && !empty($_GET['edit'])){
                     <?php endwhile;?>
                 </select>
                 <label for="category_child" class="mt-4"><b>Kategoria:</b></label>
-                <input type="text" id="category_child" <?=(isset($edit_name)?'value='.$edit_name:'');?> name="category_child" class="form-control">
+                <input type="text" id="category_child" <?=(isset($edit_name)?'value='.$edit_name:'');?> name="category_child" class="form-control" required>
                 <input type="submit" value="<?=(isset($edit_id)?'Edit':'Add');?> Category" class="btn btn-success mt-2">
             </form>
         </div>

@@ -81,11 +81,11 @@ if(isset($_POST) && !empty($_POST)){
                     <h3 class="text-center mb-1">Logowanie</h3>
                     <div class="form-group mt-4">
                         <label for="login">Login:</label>
-                        <input type="text" class="form-control" name="login" id="login">
+                        <input type="text" class="form-control" name="login" id="login" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Hasło:</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="password" name="password" id="password" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-success btn-lg mt-4 float-right">Zaloguj się!</button>

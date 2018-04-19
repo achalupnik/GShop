@@ -89,15 +89,15 @@ if(isset($_POST) && !empty($_POST)){
                 <h3 class="text-center mb-1">Zmiana hasła</h3>
                 <div class="form-group mt-4">
                     <label for="old_password">Stare hasło:</label>
-                    <input type="password" class="form-control" name="old_password" id="old_password">
+                    <input type="password" class="form-control" name="old_password" id="old_password" required>
                 </div>
                 <div class="form-group">
                     <label for="new_password">Nowe hasło:</label>
-                    <input type="password" name="new_password" id="new_password" class="form-control">
+                    <input type="password" name="new_password" id="new_password" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="confirm_password">Powtórz hasło:</label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
                 </div>
 
                 <button type="submit" class="btn btn-success btn-lg mt-4 float-right">Zmień hasło!</button>

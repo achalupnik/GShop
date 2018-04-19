@@ -88,19 +88,23 @@ if(isset($_GET['add']) && !empty($_GET['add'])){
         $sql = "INSERT INTO users (login, full_name, password, permissions) VALUES ('$login', '$name', '$password', '$permission')";
         mysqli_query($connection, $sql);
     }
-
 }
+
+//Set active tab
+if(!empty($errors) && isset($_POST['input_login']))
+    $tab = 2;
+else
+    $tab = 1;
 
 ?>
 
-<ul class="nav nav-tabs" role="tablist" id="sec_menu">
-    <li class="nav-item"><a href="#menu_1" class="nav-link active"  role="tab" data-toggle="tab" style="color: black;">Użytkownicy</a></li>
-    <li class="nav-item"><a href="#menu_2" class="nav-link" role="tab" data-toggle="tab" style="color: black;">Stwórz nowego użytkownika</a></li>
-    <li class="nav-item"><a href="#menu_3" class="nav-link" role="tab" data-toggle="tab" style="color: black;">Zmień uprawnienia</a></li>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item"><a href="#menu_1" class="nav-link <?=(($tab==1)?'active':'');?>"  role="tab" data-toggle="tab" style="color: black;">Użytkownicy</a></li>
+    <li class="nav-item"><a href="#menu_2" class="nav-link <?=(($tab==2)?'active':'');?>" role="tab" data-toggle="tab" style="color: black;">Stwórz nowego użytkownika</a></li>
 </ul>
 <div class="tab-content">
 
-    <div class="tab-pane show active" role="tabpanel" id="menu_1"><br>
+    <div class="tab-pane show <?=(($tab==1)?'active':'fade');?>" role="tabpanel" id="menu_1"><br>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -123,7 +127,13 @@ if(isset($_GET['add']) && !empty($_GET['add'])){
                 <td><?=$row['full_name'];?></td>
                 <td><?=$row['join_date'];?></td>
                 <td><?=$row['last_login_date'];?></td>
-                <td><?=$row['permissions'];?></td>
+                <td>
+                    <select class="form-control" id="user_permission" onchange="change_permissions(<?=$row['id'];?>);">
+                        <option value="">Brak</option>
+                        <option value="editor" <?=(($row['permissions']=='editor')?'selected':'');?> >Edytor</option>
+                        <option value="admin,editor" <?=(($row['permissions']=='admin,editor')?'selected':'');?> >Administrator</option>
+                    </select>
+                </td>
                 <td><a href="users.php?remove=<?=$row['id'];?>" class="btn btn-light"><i class="icon-doc-remove"></i></a></td>
             </tr>
             <?php
@@ -133,37 +143,37 @@ if(isset($_GET['add']) && !empty($_GET['add'])){
         </table>
     </div>
 
-    <div class="tab-pane fade" role="tabpanel" id="menu_2"><br>
+    <div class="tab-pane <?=(($tab==2)?'active':'fade');?>" role="tabpanel" id="menu_2"><br>
         <div class="container-fluid">
             <form action="users.php?add=1" method="post">
                 <div class="row">
                     <div class="col-md-3">
                         <label for="input_login"><b>Login</b></label>
-                        <input type="text" class="form-control" id="input_login" name="input_login">
+                        <input type="text" class="form-control" id="input_login" name="input_login" <?=((!empty($errors)&&isset($login))?'value='.$login:'');?> autofocus required>
                     </div>
                     <div class="col-md-3">
                         <label for="input_first_name"><b>Imię</b></label>
-                        <input type="text" class="form-control" id="input_first_name" name="input_first_name">
+                        <input type="text" class="form-control" id="input_first_name" name="input_first_name" <?=((!empty($errors)&&isset($first_name))?'value='.$first_name:'');?> required>
                     </div>
                     <div class="col-md-3">
                         <label for="input_second_name"><b>Nazwisko</b></label>
-                        <input type="text" class="form-control" id="input_second_name" name="input_second_name">
+                        <input type="text" class="form-control" id="input_second_name" name="input_second_name" <?=((!empty($errors)&&isset($second_name))?'value='.$second_name:'');?> required>
                     </div>
                     <div class="col-md-3">
                         <label for="input_permission"><b>Uprawnienia</b></label>
                         <select class="form-control" id="input_permission" name="input_permission">
-                            <option value="0"></option>
-                            <option value="1">Edytor</option>
-                            <option value="2">Administraotr</option>
+                            <option value="0">Brak</option>
+                            <option value="1" <?=((!empty($errors) && isset($permission) && $permission==1)?'selected':'');?>>Edytor</option>
+                            <option value="2" <?=((!empty($errors) && isset($permission) && $permission==2)?'selected':'');?>>Administraotr</option>
                         </select>
                     </div>
                     <div class="col-md-3 mt-3">
                         <label for="input_first_password"><b>Hasło</b></label>
-                        <input type="password" class="form-control" id="input_first_password" name="input_first_password">
+                        <input type="password" class="form-control" id="input_first_password" name="input_first_password" required>
                     </div>
                     <div class="col-md-3 mt-3">
                         <label for="input_second_password"><b>Powtórz hasło</b></label>
-                        <input type="password" class="form-control" id="input_second_password" name="input_second_password">
+                        <input type="password" class="form-control" id="input_second_password" name="input_second_password" required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success mt-5 mr-3 float-right">Dodaj użytkownika</button>
@@ -171,9 +181,6 @@ if(isset($_GET['add']) && !empty($_GET['add'])){
         </div>
     </div>
 
-    <div class="tab-pane fade" role="tabpanel" id="menu_3"><br>
-info3
-    </div>
 </div>
 
 

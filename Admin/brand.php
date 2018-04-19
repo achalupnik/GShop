@@ -49,7 +49,6 @@ if(isset($_POST) && !empty($_POST) || !empty($_GET)){
         $result = mysqli_query($connection, $sql);
         $row = $result->fetch_assoc();
         $edit_name = $row['name'];
-        echo "dupa";
 
         if(isset($_POST['brand_input']) && !empty($_POST['brand_input'])) {
             $brand_name = sanitize($_POST['brand_input']);
@@ -68,7 +67,7 @@ if(isset($_POST) && !empty($_POST) || !empty($_GET)){
     <form method="post" action="brand.php<?=(isset($edit_id)?'?edit='.$edit_id:'');?>" class="form-inline">
         <div class="form-group all-center">
             <label for="brand_input"><?=(isset($edit_id)?'Edytuj':'Dodaj');?> markę:</label>
-            <input type="text" id="brand_input" name="brand_input" class="form-control mx-1" placeholder="<?=(isset($edit_name)?$edit_name:'');?>">
+            <input type="text" id="brand_input" name="brand_input" class="form-control mx-1" placeholder="<?=(isset($edit_name)?$edit_name:'');?>" required>
             <input type="submit" class="btn btn-success" value="<?=(isset($edit_id)?'Edytuj':'Dodaj');?> Markę">
         </div>
     </form>

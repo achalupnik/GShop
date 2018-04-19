@@ -61,7 +61,7 @@ if(isset($_GET) && !empty($_GET)){
         $product_description = sanitize($_POST['product_description']);
 
 
-        if(isset($product_name) and !$_GET['edit']) {
+        if(isset($product_name) and !isset($_GET['edit'])) {
             $sql = "SELECT * FROM product WHERE name='$product_name'";
             $result = mysqli_query($connection, $sql);
             if ($result->num_rows)
@@ -157,12 +157,12 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
             <div class="row mt-3 mb-4">
                 <div class="col-md-3">
                     <label for="product_name">Produkt*:</label>
-                    <input type="text" id="product_name" name="product_name" class="form-control" value="<?=((isset($product_name) && !empty($product_name))?$product_name:'');?>">
+                    <input type="text" id="product_name" name="product_name" class="form-control" value="<?=((isset($product_name) && !empty($product_name))?$product_name:'');?>" required>
                 </div>
                 <div class="col-md-3">
                     <label for="product_brand">Marka*:</label>
-                    <select id="product_brand" name="product_brand" class="form-control">
-                        <option value="0"></option>
+                    <select id="product_brand" name="product_brand" class="form-control" required>
+                        <option></option>
                         <?php
                         $sql = "SELECT * FROM brand";
                         $result = mysqli_query($connection, $sql);
@@ -176,7 +176,7 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
                 </div>
                 <div class="col-md-3">
                     <label for="parent_category">Kategoria (Rodzic)*:</label>
-                    <select id="parent_category" name="parent_category" class="form-control" onchange="change_child_category();">
+                    <select id="parent_category" name="parent_category" class="form-control" onchange="change_child_category();" required>
                         <option></option>
                         <?php
                         $sql = "SELECT * FROM category WHERE parent=0";
@@ -191,7 +191,7 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
                 </div>
                 <div class="col-md-3">
                     <label for="child_category">Kategoria (Dziecko)*:</label>
-                    <select id="child_category" name="child_category" class="form-control">
+                    <select id="child_category" name="child_category" class="form-control" required>
                         <option></option>
                     </select>
                 </div>
@@ -199,7 +199,7 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
             <div class="row">
                 <div class="col-md-4">
                     <label for="product_price">Cena (zł)*:</label>
-                    <input type="text" id="product_price" name="product_price" class="form-control" placeholder="Cena np. 12.99" value="<?=((isset($product_price) && !empty($product_price))?$product_price:'');?>">
+                    <input type="text" id="product_price" name="product_price" class="form-control" placeholder="Cena np. 12.99" value="<?=((isset($product_price) && !empty($product_price))?$product_price:'');?>" required>
                 </div>
                 <div class="col-md-4">
                     <label for="btn_size">Rozmiar & Ilość*:</label>
@@ -416,9 +416,6 @@ function switch_feature(id) {
     });
 }
 
-function alertx(){
-    alert("dupa");
-}
 
 //Display all child for selected parent
 function change_child_category() {

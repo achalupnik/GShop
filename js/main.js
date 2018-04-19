@@ -96,7 +96,20 @@ function select_table(id, table) {
     });
 }
 
-$("#sec_menu li:last-child a").tab('show');
+//Change permissions for users
+function change_permissions(id){
+    var val = $("#user_permission").val();
+    var data = {"id": id, "val": val};
+    $.ajax({
+       url:     'for_ajax/users_change_permissions.php',
+       type:    'post',
+       data:    data
+    });
+}
+
+function check_alert() {
+    alert("działa ... chyba");
+}
 
 
 
