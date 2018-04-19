@@ -107,7 +107,7 @@ if(isset($_GET['edit']) && !empty($_GET['edit'])){
                 while($row = $result->fetch_assoc()):
                 ?>
                     <tr class="bg-primary">
-                        <td><?=$row['name'];?></td>
+                        <td><b><?=$row['name'];?></b></td>
                         <td>Parent</td>
                         <td>
                             <a href="category.php?edit=<?=$row['id'];?>" class="btn btn-sm btn-light"><i class="icon-pencil no-decoration"></i></a>
@@ -119,7 +119,7 @@ if(isset($_GET['edit']) && !empty($_GET['edit'])){
                 $result2 = mysqli_query($connection, $sql2);
                 while($row2 = $result2->fetch_assoc()): ?>
                     <tr class="bg-info">
-                        <td><?=$row2['name'];?></td>
+                        <td class="pl-5">- <?=$row2['name'];?></td>
                         <td><?=$row['name'];?></td>
                         <td>
                             <a href="category.php?edit=<?=$row2['id'];?>" class="btn btn-sm btn-light"><i class="icon-pencil no-decoration"></i></a>

@@ -19,10 +19,15 @@ if(!have_permission()){
 
 if(isset($_GET['remove']) && !empty($_GET['remove'])){
     $remove_id = (int)sanitize($_GET['remove']);
-    $sql = "DELETE FROM users WHERE id=".$remove_id;
-    mysqli_query($connection, $sql);
-    header('Location: users.php');
-    exit();
+    if($remove_id != $user_data['id']){
+        $sql = "DELETE FROM users WHERE id=".$remove_id;
+        mysqli_query($connection, $sql);
+        header('Location: users.php');
+        exit();
+    }else{
+        $errors[] = "Nie możesz usunąć konta, na którym jesteś zalogowany";
+        echo display_errors($errors);
+    }
 }
 
 if(isset($_GET['add']) && !empty($_GET['add'])){
@@ -128,13 +133,15 @@ else
                 <td><?=$row['join_date'];?></td>
                 <td><?=$row['last_login_date'];?></td>
                 <td>
-                    <select class="form-control" id="user_permission" onchange="change_permissions(<?=$row['id'];?>);">
+                    <select class="form-control" id="user_permission" onchange="change_permissions(<?=$row['id'];?>);" <?=(($user_data['id'] == $row['id'])?'disabled':'');?>>
                         <option value="">Brak</option>
                         <option value="editor" <?=(($row['permissions']=='editor')?'selected':'');?> >Edytor</option>
                         <option value="admin,editor" <?=(($row['permissions']=='admin,editor')?'selected':'');?> >Administrator</option>
                     </select>
                 </td>
+                <?php if($user_data['id'] != $row['id']){;?>
                 <td><a href="users.php?remove=<?=$row['id'];?>" class="btn btn-light"><i class="icon-doc-remove"></i></a></td>
+                <?php } ?>
             </tr>
             <?php
             endwhile;

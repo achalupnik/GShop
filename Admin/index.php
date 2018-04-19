@@ -9,22 +9,23 @@ include  '../Core/info.php';
 <div class="container" style="margin: 5vh 20%">
     <h4 class="text-center">Informacje</h4>
     <div class="my-5">
-        <p>Jesteś na www.gshop.pl/admin</p>
-        <p>Jest to panel administratora dla strony www.gshop.pl</p>
+        <p>Wszedłeś na <a href="#">www.gshop.pl/admin</a></p>
+        <p>Jest to panel administratora dla strony <a href="../index.php">www.gshop.pl</a></p>
         <div class="form-group m-5" style="border: 1px solid red;">
-            <h5 class="text-danger">Tajne hasła:</h5>
+            <h5 class="text-danger">&nbsp;Tajne hasła:</h5>
             <ul>
-                <li>Użytkownik (bez uprawnień)<br>login: user<br>hasło: user</li>
-                <li>Edytor (dostęp do większości funkcji)<br>login: editor<br>hasło: editor</li>
-                <li>Administraotr (pełna władza)<br>login: admin<br>hasło: admin</li>
+                <li class="mt-2"><b>Użytkownik</b> (bez uprawnień)<br>login: user<br>hasło: user</li>
+                <li class="mt-3"><b>Edytor</b> (dostęp do większości funkcji)<br>login: editor<br>hasło: editor</li>
+                <li class="mt-3"><b>Administraotr</b> (pełna władza)<br>login: admin<br>hasło: admin</li>
             </ul>
         </div>
         <p class="text-danger">Uwaga</p>
-        <p>Upload plików jest dostępny, jednak proszę o nie wrzucanie na serwer niodpowiednich plików</p>
+        <p>Upload plików jest dostępny, jednak proszę o niewrzucanie na serwer niostosownych/nieprzyzwoitych plików i treści</p>
         <p>Strona jest wciąż w trakcie rozwoju, to też niektóre funkcje mogą nie być jeszcze dostępne</p>
         <p>W przypadku uploadu zdjęć należy zachować proporcje obrazu 1:1</p>
     </div>
 </div>
+
 
 
 

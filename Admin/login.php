@@ -1,6 +1,8 @@
 <?php
 require_once '../Core/init.php';
 include 'includes/head.php';
+include  '../Core/info.php';
+
 
 $errors = array();
 if(isset($_POST) && !empty($_POST)){

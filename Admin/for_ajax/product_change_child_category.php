@@ -1,6 +1,18 @@
 <?php
 require_once '../../Core/init.php';
 
+if(!is_logged()){
+    header('Location: login.php');
+    $_SESSION['error_flash'] = "Musisz być zalogowany by mieć dostęp do tej funkcji";
+    exit();
+}
+
+if(!have_permission('editor')){
+    header('Location: index.php');
+    $_SESSION['error_flash'] = "Nie masz potrzebnych uprawnień by przeprowadzić tą akcję";
+    exit();
+}
+
 ob_start();
 $parent_id = (int)sanitize($_POST['parent_id']);
 $error_parent = (int)sanitize($_POST['error_parent']);

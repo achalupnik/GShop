@@ -56,9 +56,6 @@ hr {
     border-radius: 0;
 }
 
-#search:hover{
-    border: 1px solid #737373;
-}
 
 #btn_search{
     -webkit-border-radius: 0 5px 5px 0;
