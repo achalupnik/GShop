@@ -70,6 +70,7 @@ function set_li_width() {
         var img_height = $("#slider li:nth-child("+i+") img").height();
         var img_width = $("#slider li:nth-child("+i+") img").width();
         if (img_width < img_height) {
+
             $("#slider li:nth-child("+i+") img").height(img_width);
             $("#slider li:nth-child("+i+") img").width('auto');
             $("#slider li:nth-child("+i+") #to-align").css({"margin":"auto"});
@@ -77,8 +78,8 @@ function set_li_width() {
     }
 
     //Set height of right and left slider strip
-    $("#right_mark").height($("#slider li:nth-child(1)").height());
-    $("#left_mark").height($("#slider li:nth-child(1)").height());
+    $("#right_mark").height($("#slider li:first-child").height());
+    $("#left_mark").height($("#slider li:first-child").height());
 }
 
 
