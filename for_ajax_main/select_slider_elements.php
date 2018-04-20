@@ -5,9 +5,9 @@ $id = (int)sanitize($_POST['id']);
 $table = sanitize($_POST['table']);
 
 if($id!==0)
-    $sql = "SELECT * FROM product WHERE feature=1 and $table=".$id;
+    $sql = "SELECT * FROM product WHERE $table=".$id;
 else
-    $sql = "SELECT * FROM product WHERE feature=1 LIMIT 40";
+    $sql = "SELECT * FROM product LIMIT 40";
 
 $result = mysqli_query($connection, $sql);
 
@@ -16,13 +16,13 @@ $result = mysqli_query($connection, $sql);
         ?>
 
         <li>
-            <div class="card">
+            <div class="card" id="pusty">
                 <div class="card-header text-center"><?= $row['name']; ?></div>
                 <div class="card-body">
                     <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
                 </div>
                 <div class="card-footer">
-                    <span class="float-left" style="line-height: 30px;"><?= $row['price']; ?>zł</span><div style="clear:both">
+                    <span class="float-left" style="line-height: 30px;"><?= $row['price']; ?>zł</span>
                     <button class="btn btn-sm float-right" data-toggle="modal" data-target="#slider_modal"
                             onclick="summon_modal(<?= $row['id']; ?>);">
                         <details></details>
