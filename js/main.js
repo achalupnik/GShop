@@ -49,7 +49,7 @@ $(document).ready(function () {
 
 
 
-//Slider - set number li
+//Slider - set number li elements
 set_li_width();
 $(window).resize(function() {
     set_li_width();
@@ -63,9 +63,25 @@ function set_li_width() {
     var full_width = $("#slider_wrapper").width();
     var new_li_width = (full_width - 2*number_li*m_right)/number_li;
     $("ul#slider li").width(new_li_width);
+
+    //When img is too height
+    var li_amount = $("#slider li").length;
+    for(var i=1; i<=li_amount; i++) {
+        var img_height = $("#slider li:nth-child("+i+") img").height();
+        var img_width = $("#slider li:nth-child("+i+") img").width();
+        if (img_width < img_height) {
+            $("#slider li:nth-child("+i+") img").height(img_width);
+            $("#slider li:nth-child("+i+") img").width('auto');
+            $("#slider li:nth-child("+i+") #to-align").css({"margin":"auto"});
+        }
+    }
+
+    //Set height of right and left slider strip
     $("#right_mark").height($("#slider li:nth-child(1)").height());
     $("#left_mark").height($("#slider li:nth-child(1)").height());
 }
+
+
 
 
 

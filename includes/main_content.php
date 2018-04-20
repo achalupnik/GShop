@@ -16,7 +16,7 @@
             <li>
                 <div class="card" id="pusty">
                     <div class="card-header text-center"><?=$row['name'];?></div>
-                    <div class="card-body">
+                    <div class="card-body" id="to-align">
                         <img src="<?=$row['image'];?>" alt="<?=$row['name'];?>">
                     </div>
                     <div class="card-footer">
