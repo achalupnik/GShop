@@ -1,3 +1,5 @@
+var count = 0;
+
 $(document).ready(function () {
 
     //Main-menu responsiveness
@@ -16,7 +18,6 @@ $(document).ready(function () {
 
 
     //Slider
-    var count = 0;
     $("#right_mark").click(function () {
         count++;
         var translate = count * $("#slider_wrapper").width();
@@ -64,7 +65,7 @@ function set_li_width() {
     var new_li_width = (full_width - 2*number_li*m_right)/number_li;
     $("ul#slider li").width(new_li_width);
 
-    //When img is too height
+    //When img height is > than width
     var li_amount = $("#slider li").length;
     for(var i=1; i<=li_amount; i++) {
         var img_height = $("#slider li:nth-child("+i+") img").height();
@@ -72,13 +73,16 @@ function set_li_width() {
         if (img_width < img_height) {
             $("#slider li:nth-child("+i+") img").height(img_width);
             $("#slider li:nth-child("+i+") img").width('auto');
-            $("#slider li:nth-child("+i+") #to-align").css({"margin":"auto"});
+            $("#slider li:nth-child("+i+") .to-align-img").css({"margin":"auto"});
         }
     }
 
     //Set height of right and left slider strip
-    $("#right_mark").height($("#slider li:nth-child(1)").height());
-    $("#left_mark").height($("#slider li:nth-child(1)").height());
+    setTimeout(function () {
+        $("#right_mark").height($("#slider li:first-child").height());
+        $("#left_mark").height($("#slider li:first-child").height());
+    },200);
+
 }
 
 
@@ -110,6 +114,10 @@ function select_table(id, table) {
             set_li_width();
         }
     });
+
+    //move slider to start position - x=0
+        count=0;
+        $("#slider").css("transform","translate(0px)");
 }
 
 //Change permissions for users
@@ -121,6 +129,35 @@ function change_permissions(id){
        type:    'post',
        data:    data
     });
+}
+
+
+function add_to_cart() {
+    if($("#cart_size").val()=='' || $("#cart_quantity").val()==0 || $("#cart_quantity").val() == '')
+        $("#cart_error").html("&nbsp;Musisz wypełnić wszystkie pola");
+    else{
+        var cart_form = $("#add_to_cart_form").serialize();
+        $.ajax({
+            url:        'for_ajax_main/add_to_cart.php',
+            type:       'post',
+            data:       cart_form,
+            success:    function (data) {
+                if(data === '1'){
+                    $("#cart_error").html("&nbsp;Musisz wypełnić wszystkie pola");
+                }else if(data === '2')
+                    $("#cart_error").html("&nbsp;Wymagana ilość towaru nie jest dostępna");
+                else if(data === '3')
+                    $("#cart_error").html("&nbsp;Musisz być zalogowany by mieć dostęp do tej funkcji");
+                else{
+                        $("#cart_error").html("");
+                        //$("#close_add_to_cart_modal").trigger("click");
+                    }
+            },
+            error:      function () {
+                $("#cart_error").html("&nbsp;Coś poszło nie tak ...");
+            }
+        })
+   }
 }
 
 function check_alert() {

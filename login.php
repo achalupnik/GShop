@@ -1,7 +1,7 @@
 <?php
-require_once '../Core/init.php';
+require_once 'Core/init.php';
 include 'includes/head.php';
-include  '../Core/info.php';
+include 'Core/info.php';
 
 
 $errors = array();
@@ -53,7 +53,7 @@ if(isset($_POST) && !empty($_POST)){
 <style type="text/css">
     body{
         /* Background pattern from Toptal Subtle Patterns */
-        background-image: url('../img/patterns/skulls.png');
+        background-image: url('img/patterns/skulls.png');
     }
 
     #form_container{

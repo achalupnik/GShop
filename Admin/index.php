@@ -21,8 +21,7 @@ include  '../Core/info.php';
         </div>
         <p class="text-danger">Uwaga</p>
         <p>Upload plików jest dostępny, jednak proszę o niewrzucanie na serwer niostosownych/nieprzyzwoitych plików i treści</p>
-        <p>Strona jest wciąż w trakcie rozwoju, to też niektóre funkcje mogą nie być jeszcze dostępne</p>
-        <p>W przypadku uploadu zdjęć należy zachować proporcje obrazu 1:1</p>
+        <p>Strona jest w trakcie rozwoju, to też niektóre funkcje po stronie użytkownika wciąż mogą być niedostępne</p>
     </div>
 </div>
 
