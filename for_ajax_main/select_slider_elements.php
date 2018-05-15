@@ -16,9 +16,9 @@ $result = mysqli_query($connection, $sql);
         ?>
 
         <li>
-            <div class="card">
+            <div class="card" id="pusty">
                 <div class="card-header text-center"><?= $row['name']; ?></div>
-                <div class="card-body to-align-img">
+                <div class="card-body">
                     <img src="<?= $row['image']; ?>" alt="<?= $row['name']; ?>">
                 </div>
                 <div class="card-footer">

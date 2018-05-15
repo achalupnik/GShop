@@ -1,7 +1,6 @@
 <?php
 include "includes/head.php";
 include "includes/menu.php";
-include 'Core/info.php';
 include "includes/main_img.php";
 include "includes/left_sidebar.php";
 include "includes/main_content.php";

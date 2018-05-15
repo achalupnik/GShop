@@ -71,9 +71,9 @@ if(isset($_POST) && !empty($_POST)){
             -moz-border-radius: 15px;
             border-radius: 15px;
 
-            -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
-            box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 0px 0px 64px 39px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 64px 39px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 64px 39px rgba(0,0,0,0.75);
         }
 
         #main_container{

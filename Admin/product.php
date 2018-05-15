@@ -237,12 +237,12 @@ if((isset($_GET['add']) && !empty($_GET['add'])) || isset($_GET['edit']) && !emp
                 <div class="col-md-6">
                     <?php if(isset($edit_id) && !empty($product_img)){ ?>
                         <div id="div_remove_img" class="d-flex flex-column">
-                            <label for="edit_img">Obraz: (pref. w proporcji 1:1)</label>
+                            <label for="edit_img">Obraz:</label>
                             <img class="mb-2 w-25" id="edit_img" src="<?=$product_img;?>" alt="obraz" height="auto">
                             <button type="button" class="btn btn-secondary w-25" onclick="remove_img(<?=$edit_id;?>);">Usuń obraz</button>
                         </div>
                     <?php }else{ ?>
-                        <label for="product_img">Obraz: (pref. w proporcji 1:1)</label>
+                        <label for="product_img">Obraz:</label>
                         <input type="file" id="product_img" name="product_img" class="form-control">
                     <?php } ?>
                 </div>

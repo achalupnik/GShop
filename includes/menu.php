@@ -40,29 +40,11 @@
         <button class="btn" id="btn_search" type="submit">Search</button>
     </form>
     <div><a href="#"><i class="icon-basket myicon"><span class="badge badge-info mr-3" id="badge">0</span></i></a></div>
-    <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account_user"><i id="user_icon" class="icon-user myicon"></i></a>
+    <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account_user"><i class="icon-user myicon"></i></a>
     <ul class="dropdown-menu" id="account_user" style="left: -150%;">
-        <?php
-        if(is_logged()){
-            ?>
-            <li class="dropdown-submenu"><a class="dropdown-item" href="change_password.php">Zmień hasło</a></li>
-            <li class="dropdown-submenu"><a class="dropdown-item" href="logout.php">Wyloguj się</a></li>
-            <?php
-        }else {
-            ?>
-            <li class="dropdown-submenu"><a class="dropdown-item" href="login.php">Zaloguj się</a></li>
-            <?php
-        }
-        ?>
+        <li class="dropdown-submenu"><a class="dropdown-item" href="#">LogIn</a></li>
+        <li class="dropdown-submenu"><a class="dropdown-item" href="#">Logout</a></li>
     </ul>
     </div>
 
 </nav>
-
-<?php
-if(is_logged()){ ?>
-    <script type="text/javascript">
-        document.getElementById("user_icon").style.color = "#80aaff";
-    </script>
-    <?php
-}
