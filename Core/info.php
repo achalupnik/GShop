@@ -1,6 +1,6 @@
 <?php
 if(isset($_SESSION['success_flash']) && !empty($_SESSION['success_flash'])){
-    echo '<ul class="bg-success" id="success_flash"><li>'.$_SESSION['success_flash'].'</li></ul>'; ?>
+    echo '<ul class="bg-success" id="success_flash"><li>&nbsp;'.$_SESSION['success_flash'].'</li></ul>'; ?>
     <script type="text/javascript">
         setTimeout(function () {
             $("#success_flash").html("");
@@ -11,7 +11,7 @@ if(isset($_SESSION['success_flash']) && !empty($_SESSION['success_flash'])){
 }
 
 if(isset($_SESSION['error_flash']) && !empty($_SESSION['error_flash'])){
-    echo '<ul class="bg-danger" id="error_flash"><li>'.$_SESSION['error_flash'].'</li></ul>'; ?>
+    echo '<ul class="bg-danger" id="error_flash"><li>&nbsp;'.$_SESSION['error_flash'].'</li></ul>'; ?>
     <script type="text/javascript">
         setTimeout(function () {
             $("#error_flash").html("");
