@@ -1,8 +1,14 @@
 <?php
+
 $host = "localhost";
 $user = "root";
 $password = "";
 $db_name = "gshop";
+/*
+$host = "pma.ct8.pl";
+$user = "m6145_tajniak";
+$password = "Topsecret111";
+$db_name = "m6145_gshop";*/
 
 $connection = @mysqli_connect($host, $user, $password, $db_name);
 if($connection->errno){

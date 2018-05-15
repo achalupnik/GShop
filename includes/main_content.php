@@ -7,9 +7,9 @@
             <?php
             if(isset($_GET['brand']) && !empty($_GET['brand'])){
                 $brand = (int)sanitize($_GET['brand']);
-                $sql = "SELECT * FROM product WHERE brand='$brand' LIMIT 40";
+                $sql = "SELECT * FROM product WHERE feature=1 AND deleted=0 AND brand='$brand' LIMIT 40";
             }else
-                $sql = "SELECT * FROM product LIMIT 40";
+                $sql = "SELECT * FROM product WHERE feature=1 AND deleted=0 LIMIT 40";
             $result = mysqli_query($connection, $sql);
             while($row = $result->fetch_assoc()):
             ?>

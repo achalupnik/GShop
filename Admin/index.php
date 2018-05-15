@@ -1,6 +1,6 @@
 <?php
-include  'Includes/head.php';
-include  'Includes/menu.php';
+include  'includes/head.php';
+include  'includes/menu.php';
 include  '../Core/info.php';
 
 ?>
@@ -32,4 +32,4 @@ include  '../Core/info.php';
 
 
 <?php
-include 'Includes/footer.php';
+include 'includes/footer.php';

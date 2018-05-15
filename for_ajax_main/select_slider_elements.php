@@ -5,9 +5,9 @@ $id = (int)sanitize($_POST['id']);
 $table = sanitize($_POST['table']);
 
 if($id!==0)
-    $sql = "SELECT * FROM product WHERE $table=".$id;
+    $sql = "SELECT * FROM product WHERE feature=1 AND deleted=0 AND $table=".$id;
 else
-    $sql = "SELECT * FROM product LIMIT 40";
+    $sql = "SELECT * FROM product WHERE feature=1 AND deleted=0 LIMIT 40";
 
 $result = mysqli_query($connection, $sql);
 
