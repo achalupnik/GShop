@@ -29,7 +29,7 @@
         </ul>
     </div>
     <form class="form-inline" style="margin-right: 40px;" id="f_form">
-        <select class="form-control" id="select_form">
+        <select class="form-control" id="select_form" onchange="search_filter();">
             <option value="0">Wszystkie działy</option>
             <?php
             $sql = "SELECT * FROM category WHERE parent = 0";

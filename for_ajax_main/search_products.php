@@ -1,13 +1,18 @@
 <?php
 require_once '../Core/init.php';
 
-$search_val = sanitize($_POST['search_val']);
 $category_id = (int)sanitize($_POST['category_id']);
 
-if($category_id === 0)
-    $sql = "SELECT * FROM product WHERE name LIKE '%$search_val%'";
-else
-    $sql = "SELECT p.id,p.name,p.price,p.image FROM product as p INNER JOIN category as c WHERE p.name LIKE '%$search_val%' AND p.category=c.id AND c.parent='$category_id'";
+if(empty($_POST['search_val'])){
+    $sql = "SELECT p.id,p.name,p.price,p.image FROM product as p INNER JOIN category as c WHERE p.category=c.id AND c.parent='$category_id'";
+}else{
+    $search_val = sanitize($_POST['search_val']);
+    if($category_id === 0)
+        $sql = "SELECT * FROM product WHERE name LIKE '%$search_val%'";
+    else
+        $sql = "SELECT p.id,p.name,p.price,p.image FROM product as p INNER JOIN category as c WHERE p.name LIKE '%$search_val%' AND p.category=c.id AND c.parent='$category_id'";
+}
+
 
 $result = mysqli_query($connection, $sql);
 
