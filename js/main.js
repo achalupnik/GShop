@@ -156,8 +156,29 @@ function add_to_cart() {
             error:      function () {
                 $("#cart_error").html("&nbsp;Coś poszło nie tak ...");
             }
-        })
+        });
    }
+}
+
+
+//search products
+function search_filter(){
+    var search_val = $("#search").val();
+    var category_id = $("#select_form").val();
+    var data = {'search_val': search_val, 'category_id': category_id};
+    $.ajax({
+        url:        'for_ajax_main/search_products.php',
+        type:       'post',
+        data:       data,
+        success:    function(data){
+            $("#slider").html(data);
+            set_li_width();
+        },
+        error:      function () {
+            alert("error");
+        }
+
+    });
 }
 
 function check_alert() {

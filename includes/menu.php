@@ -30,13 +30,17 @@
     </div>
     <form class="form-inline" style="margin-right: 40px;" id="f_form">
         <select class="form-control" id="select_form">
-            <option>Wszystkie działy</option>
-            <option>Mężczyzna</option>
-            <option>Kobieta</option>
-            <option>Chłopiec</option>
-            <option>Dziewczynka</option>
+            <option value="0">Wszystkie działy</option>
+            <?php
+            $sql = "SELECT * FROM category WHERE parent = 0";
+            $result = mysqli_query($connection, $sql);
+            while($row = $result->fetch_assoc()): ?>
+            <option value="<?=$row['id']?>"><?=$row['name']?></option>
+            <?php
+            endwhile;
+            ?>
         </select>
-        <input class="form-control " type="search" placeholder="Search" id="search">
+        <input class="form-control " type="search" placeholder="Search" id="search" onkeyup="search_filter();">
         <button class="btn" id="btn_search" type="submit">Search</button>
     </form>
     <div><a href="#"><i class="icon-basket myicon"><span class="badge badge-info mr-3" id="badge">0</span></i></a></div>
