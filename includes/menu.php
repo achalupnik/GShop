@@ -41,7 +41,6 @@
             ?>
         </select>
         <input class="form-control " type="search" placeholder="Search" id="search" onkeyup="search_filter();">
-        <button class="btn" id="btn_search" type="submit">Search</button>
     </form>
     <div><a href="#"><i class="icon-basket myicon"><span class="badge badge-info mr-3" id="badge">0</span></i></a></div>
     <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account_user"><i id="user_icon" class="icon-user myicon"></i></a>
