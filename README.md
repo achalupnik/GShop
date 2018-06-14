@@ -1,4 +1,4 @@
 # GShop 
-My new project - Shop online. Created in 2018.
+My new project - Shop online. Created in 2018. PHP 5.6.
 
-Exported data-base is placed in root folder.
+Exported database file - sql is placed in root folder.
