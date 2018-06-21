@@ -27,9 +27,12 @@ if(isset($_POST) && !empty($_POST)){
     
     if(isset($new_password) && isset($confirm_password) && $new_password != $confirm_password)
         $errors[] = "Podane hasła różnią się od siebie";
+	
+	if($user_data['login'] == 'admin')
+		$errors[] = "Nie można zmieniać hasła adminowi";
     
     if(empty($errors)){
-        $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $new_password = password_hash($new_password, PASSWORD_DEFAULT);	
 
         if(password_verify($old_password, $user_data['password'])){
             $sql = "UPDATE users SET password='$new_password' WHERE id=".$user_data['id'];

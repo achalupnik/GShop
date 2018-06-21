@@ -27,6 +27,9 @@ if(isset($_POST) && !empty($_POST)){
     
     if(isset($new_password) && isset($confirm_password) && $new_password != $confirm_password)
         $errors[] = "Podane hasła różnią się od siebie";
+	
+	if($user_data['login'] == 'admin')
+		$errors[] = "Nie można zmieniać hasła adminowi";
     
     if(empty($errors)){
         $new_password = password_hash($new_password, PASSWORD_DEFAULT);
@@ -85,7 +88,7 @@ if(isset($_POST) && !empty($_POST)){
 
     <div class="container-fluid" id="main_container">
         <div id="form_container">
-            <form method="post">
+		    <form method="post">
                 <h3 class="text-center mb-1">Zmiana hasła</h3>
                 <div class="form-group mt-4">
                     <label for="old_password">Stare hasło:</label>
@@ -99,7 +102,6 @@ if(isset($_POST) && !empty($_POST)){
                     <label for="confirm_password">Powtórz hasło:</label>
                     <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
                 </div>
-
                 <button type="submit" class="btn btn-success btn-lg mt-4 float-right">Zmień hasło!</button>
             </form>
             <div style="clear: both;"></div>
